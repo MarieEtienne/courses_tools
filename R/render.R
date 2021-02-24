@@ -9,7 +9,7 @@ dirnames <- unique(dirnames)
 for(directory in dirnames){
   filenames <- list.files(directory, pattern = '.Rmd',
                           full.names = TRUE)
-  system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
+  system(glue::glue( 'cp courses_tools/resources/mpe_pres.css {directory}/.'))
   
   for(f_ in filenames){
     system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
