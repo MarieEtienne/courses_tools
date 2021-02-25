@@ -1,22 +1,19 @@
-#system('rm -rf render')
+## Specify a directeory to generate the rmd files from
+## by defaults generates all rmd
+system('rm -rf render')
 system('mkdir -p render')
-dirnames <- stringr::str_split(
-  list.files('.', pattern = '.Rmd',
-             full.names = TRUE, recursive = TRUE) ,
-  pattern = '/', simplify = TRUE)[,2] 
-dirnames <- unique(dirnames)
 
-for(directory in dirnames){
-  filenames <- list.files(directory, pattern = '.Rmd',
-                          full.names = TRUE)
-  system(glue::glue( 'cp courses_tools/resources/mpe_pres.css {directory}/.'))
-  
-  for(f_ in filenames){
-    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
-    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
-    
-    rmarkdown::render(f_)
-  }
-  system( glue::glue( 'cp -rf  {directory} render/ '))
-  
+filenames <- list.files('sources', pattern = 'Rmd',
+                        full.names = FALSE, recursive = TRUE)
+
+
+system(glue::glue( 'cp courses_tools/resources/mpe_pres.css sources/.'))
+
+
+for(f_ in filenames){
+  rmarkdown::render(glue::glue( 'sources/{f_}'))
 }
+
+system('cp -rf sources/* render/.')
+
+
