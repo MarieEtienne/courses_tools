@@ -9,7 +9,7 @@ tidyverse
 wesanderson
 #reporting
 rmarkdown
-RefManager #remotes::install_github("ropensci/RefManageR")
+RefManageR#remotes::install_github("ropensci/RefManageR")
 # # presentation ------------------------------------------------------------
 xaringan #remotes::install_github('yihui/xaringan')
 flipbookr #remotes::install_github("EvaMaeRey/flipbookr")
