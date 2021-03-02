@@ -1,0 +1,16 @@
+
+
+# system ------------------------------------------------------------------
+remotes
+devtools
+# tidyverse ---------------------------------------------------------------
+tidyverse
+# graphic -----------------------------------------------------------------
+wesanderson
+#reporting
+rmarkdown
+RefManager #remotes::install_github("ropensci/RefManageR")
+# # presentation ------------------------------------------------------------
+xaringan #remotes::install_github('yihui/xaringan')
+flipbookr #remotes::install_github("EvaMaeRey/flipbookr")
+xaringanExtra #remotes::install_github("gadenbuie/xaringanExtra")
