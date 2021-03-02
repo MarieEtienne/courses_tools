@@ -3,6 +3,8 @@
 system('rm -rf render')
 system('mkdir -p render')
 
+
+source('courses_tools/R/load_packages.R')
 filenames <- list.files('sources', pattern = 'Rmd',
                         full.names = FALSE, recursive = TRUE)
 
