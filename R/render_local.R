@@ -3,18 +3,19 @@ system('mkdir -p render')
 
 source(file.path('courses_tools','R', 'load_packages.R'))
 
-directory <- 'sources/Rstudio'
-
-
-filenames <- list.files(directory, pattern = '.Rmd',
-                        full.names = TRUE)
-system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
-
-for(f_ in filenames){
-  system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
-  system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
+directory_list <- list.files('sources/', full.names = TRUE)
+for( d in directory_list){
   
-  rmarkdown::render(f_)
+  filenames <- list.files(directory, pattern = '.Rmd',
+                          full.names = TRUE)
+  system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
+  
+  for(f_ in filenames){
+    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
+    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
+  }
+  
+  rmarkdown::render(file.path(directory, 'index.Rmd'))
+  
+  system( glue::glue( 'cp -rf  {directory} render/ '))
 }
-system( glue::glue( 'cp -rf  {directory} render/ '))
-

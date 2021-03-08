@@ -4,18 +4,24 @@ system('rm -rf render')
 system('mkdir -p render')
 
 
-source('courses_tools/R/load_packages.R')
-filenames <- list.files('sources', pattern = 'Rmd',
-                        full.names = FALSE, recursive = TRUE)
+source(file.path('courses_tools','R', 'load_packages.R'))
 
-
-system(glue::glue( 'cp courses_tools/resources/mpe_pres.css sources/.'))
-
-
-for(f_ in filenames){
-  rmarkdown::render(glue::glue( 'sources/{f_}'))
+directory_list <- list.files('sources/', full.names = TRUE)
+for( d in directory_list){
+  
+  filenames <- list.files(directory, pattern = '.Rmd',
+                          full.names = TRUE)
+  system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
+  
+  for(f_ in filenames){
+    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
+    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
+  }
+  
+  rmarkdown::render(file.path(directory, 'index.Rmd'))
+  
+  system( glue::glue( 'cp -rf  {directory} render/ '))
 }
 
-system('cp -rf sources/* render/.')
 
 
