@@ -8,6 +8,7 @@ packages_to_be_installed <- c(file.path(main_dir,'resources','project_package_li
 
 print(packages_to_be_installed)
 for ( l in packages_to_be_installed){
+  print(l)
   if(file.exists(l)){
     package_list <- read.table(l, header = TRUE, sep = ',')
     if(nrow(package_list)>0){
