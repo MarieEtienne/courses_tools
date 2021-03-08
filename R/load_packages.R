@@ -19,6 +19,7 @@ for ( l in packages_to_be_installed){
           } else {
             remotes::install_github(paste0(repo,'/',name))
           }
+          print(paste0('loading ', package_list$name[i],'.\n'))
           library(package_list$name[i],character.only = TRUE)
         }
       }
