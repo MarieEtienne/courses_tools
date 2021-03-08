@@ -12,12 +12,12 @@ for ( l in packages_to_be_installed){
     package_list <- read.table(l, header = TRUE, sep = ',')
     if(nrow(package_list)>0){
       for( i in 1:nrow(package_list)){
-        if(!require(package_list$name[i],character.only = TRUE)){
+        if(!library(package_list$name[i],character.only = TRUE, logical.return = TRUE)){
           cat(paste0('Package ', package_list$name[i], ' mentionned in ', l, ' is missing. Now installing it'))
-          if(package_list$repo == 'cran'){
+          if(package_list$repo[i] == 'cran'){
             install.packages(package_list$name[i])
           } else {
-            remotes::install_github(paste0(repo,'/',name))
+            remotes::install_github(paste0(package_list$repo[i],'/',package_list$name[i]))
           }
         }
         cat('Loading ', package_list$name[i],'\n')
