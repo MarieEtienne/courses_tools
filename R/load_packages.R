@@ -1,16 +1,13 @@
 ##########################################################
 #### cran packages
 ##########################################################
-if(!exists("main_dir")){
-  packages_to_be_installed <- c(file.path('resources','project_package_list.txt'), 
-                                file.path( 'courses_tools', 'resources', 'common_package_list.txt'))
-} else{
-  packages_to_be_installed <- c(file.path(main_dir,'resources','project_package_list.csv'), 
-                                file.path(main_dir, 'courses_tools', 'resources', 'common_package_list.csv'))
-  
+
+packages_to_be_installed <- c(file.path('resources','project_package_list.csv'), 
+                              file.path( 'courses_tools', 'resources', 'common_package_list.csv'))
+if(exists("main_dir")){
+  packages_to_be_installed <- file.path(main_dir, packages_to_be_installed)
 }
 for ( l in packages_to_be_installed){
-  browser()
   if(file.exists(l)){
     package_list <- read.table(l, header = TRUE, sep = ',')
     if(nrow(package_list)>0){
@@ -22,9 +19,9 @@ for ( l in packages_to_be_installed){
           } else {
             remotes::install_github(paste0(repo,'/',name))
           }
-          print(paste0('Loading ', package_list$name[i],'.\n'))
-          library(package_list$name[i],character.only = TRUE)
         }
+        cat('Loading ', package_list$name[i],'\n')
+        library(package_list$name[i],character.only = TRUE)
       }
     }
   }
