@@ -1,6 +1,8 @@
 ##########################################################
 #### cran packages
 ##########################################################
+if(!exists("main_dir"))
+   main_dir <- ''
 packages_to_be_installed <- c(paste0(main_dir,'resources/project_package_list.txt'), 
                               paste0(main_dir, '/courses_tools/resources/common_package_list.txt'))
 
