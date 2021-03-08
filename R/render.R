@@ -10,7 +10,8 @@ system( glue::glue( 'cp -rf  resources/fig  render/resources/. '))
 
 source(file.path('courses_tools','R', 'load_packages.R'))
 
-directory_list <- list.files('sources/', full.names = TRUE)
+directory_list <- stringr::str_remove(string = list.files('.', pattern = '.Rmd', full.names = TRUE, recursive = TRUE),
+                                      pattern = "\\/[:alpha:]+.Rmd")
 for( directory in directory_list){
   
   filenames <- list.files(directory, pattern = '.Rmd',
