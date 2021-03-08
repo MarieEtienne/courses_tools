@@ -7,7 +7,7 @@ system('mkdir -p render')
 source(file.path('courses_tools','R', 'load_packages.R'))
 
 directory_list <- list.files('sources/', full.names = TRUE)
-for( d in directory_list){
+for( directory in directory_list){
   
   filenames <- list.files(directory, pattern = '.Rmd',
                           full.names = TRUE)
