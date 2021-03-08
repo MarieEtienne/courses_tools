@@ -22,6 +22,9 @@ for( directory in directory_list){
   
   system( glue::glue( 'cp -rf  {directory} render/ '))
 }
-
+system('mkdir render/courses_tools') 
+system('mkdir render/resources') 
+system( glue::glue( 'cp -rf  courses_tools/resources render/courses_tools/. '))
+system( glue::glue( 'cp -rf  resources/fig  render/resources/. '))
 
 
