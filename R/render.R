@@ -17,6 +17,8 @@ for( directory in directory_list){
   filenames <- list.files(directory, pattern = '.Rmd',
                           full.names = TRUE)
   system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
+  system(glue::glue( 'cp resources/*.bib {directory}/.'))
+  
   
   for(f_ in filenames){
     system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
