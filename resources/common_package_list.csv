@@ -5,7 +5,7 @@ cran,tidyverse,data wrangling
 cran,ggplot2,graphic
 cran,wesanderson,graphic
 cran,rmarkdown,reporting
-ropensci,RefManageR,reporting
+cran,RefManageR,reporting
 yihui,xaringan,reporting
 EvaMaeRey,flipbookr,reporting
 gadenbuie,xaringanExtra,reporting

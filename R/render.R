@@ -10,8 +10,8 @@ system( glue::glue( 'cp -rf resources/figs render/resources/.'))
 
 source(file.path('courses_tools','R', 'load_packages.R'))
 
-directory_list <- stringr::str_remove(string = list.files('.', pattern = '.Rmd', full.names = TRUE, recursive = TRUE),
-                                      pattern = "\\/[:alpha:]+.Rmd")
+directory_list <- unique(stringr::str_remove(string = list.files('.', pattern = '.Rmd', full.names = TRUE, recursive = TRUE),
+                                      pattern = "\\/[:alpha:]+.Rmd"))
 for( directory in directory_list){
   
   filenames <- list.files(directory, pattern = '.Rmd',
@@ -23,6 +23,7 @@ for( directory in directory_list){
   for(f_ in filenames){
     system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
     system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
+    rmarkdown::render(f_)
   }
   
   rmarkdown::render(file.path(directory, 'index.Rmd'))
