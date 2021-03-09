@@ -10,26 +10,23 @@ system( glue::glue( 'cp -rf resources/figs render/resources/.'))
 
 source(file.path('courses_tools','R', 'load_packages.R'))
 
-directory_list <- unique(stringr::str_remove(string = list.files('.', pattern = '.Rmd', full.names = TRUE, recursive = TRUE),
-                                      pattern = "\\/[:alpha:]+.Rmd"))
-for( directory in directory_list){
-  
-  filenames <- list.files(directory, pattern = '.Rmd',
-                          full.names = TRUE)
-  system(glue::glue( 'cp resources/mpe_pres.css {directory}/.'))
-  system(glue::glue( 'cp resources/*.bib {directory}/.'))
-  
-  
-  for(f_ in filenames){
-    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
-    system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
-    rmarkdown::render(f_)
-  }
-  
-  rmarkdown::render(file.path(directory, 'index.Rmd'))
-  
-  system( glue::glue( 'cp -rf  {directory} render/ '))
+
+
+filenames <- list.files('sources', pattern = '.Rmd',
+                        full.names = TRUE)
+system(glue::glue( 'cp resources/mpe_pres.css sources/.'))
+system(glue::glue( 'cp resources/*.bib sources/.'))
+
+
+for(f_ in filenames){
+  system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
+  system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
+  rmarkdown::render(f_)
 }
+
+
+system( glue::glue( 'cp -rf sources/* render/. '))
+
 
 
 
