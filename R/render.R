@@ -12,10 +12,10 @@ source(file.path('courses_tools','R', 'load_packages.R'))
 
 
 
-filenames <- list.files('sources', pattern = '.Rmd',
+filenames <- list.files('presentation', pattern = '.Rmd',
                         full.names = TRUE)
-system(glue::glue( 'cp resources/mpe_pres.css sources/.'))
-system(glue::glue( 'cp resources/*.bib sources/.'))
+system(glue::glue( 'cp resources/mpe_pres.css presentation/.'))
+system(glue::glue( 'cp resources/*.bib presentation/.'))
 
 
 for(f_ in filenames){
@@ -25,7 +25,7 @@ for(f_ in filenames){
 }
 
 
-system( glue::glue( 'cp -rf sources/* render/. '))
+system( glue::glue( 'cp -rf presentation render/. '))
 
 
 
