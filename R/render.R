@@ -1,7 +1,7 @@
 ## Specify a directeory to generate the rmd files from
 ## by defaults generates all rmd
-system('rm -rf render')
-system('mkdir -p render')
+rmarkdown::render_site(encoding = 'UTF-8')
+
 
 system('mkdir render/courses_tools') 
 system('mkdir render/resources') 
@@ -12,10 +12,10 @@ source(file.path('courses_tools','R', 'load_packages.R'))
 
 
 
-filenames <- list.files('presentation', pattern = '.Rmd',
+filenames <- list.files('_presentation', pattern = '.Rmd',
                         full.names = TRUE)
-system(glue::glue( 'cp resources/mpe_pres.css presentation/.'))
-system(glue::glue( 'cp resources/*.bib presentation/.'))
+system(glue::glue( 'cp resources/mpe_pres.css _presentation/.'))
+system(glue::glue( 'cp resources/*.bib _presentation/.'))
 
 
 for(f_ in filenames){
@@ -25,7 +25,7 @@ for(f_ in filenames){
 }
 
 
-system( glue::glue( 'cp -rf presentation render/. '))
+system( glue::glue( 'cp -rf _presentation render/. '))
 
 
 
