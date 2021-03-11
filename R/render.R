@@ -1,5 +1,4 @@
-## Specify a directeory to generate the rmd files from
-## by defaults generates all rmd
+
 rmarkdown::render_site(encoding = 'UTF-8')
 
 
