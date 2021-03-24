@@ -1,7 +1,7 @@
 
+rmarkdown::render_site(encoding = 'UTF-8')
 
 
-system('mkdir -p render') 
 system('mkdir render/courses_tools') 
 system('mkdir render/resources') 
 system( glue::glue( 'cp -rf courses_tools/resources render/courses_tools/.'))
@@ -20,7 +20,7 @@ system(glue::glue( 'cp resources/*.bib _presentation/.'))
 for(f_ in filenames){
   system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_cache'))
   system(glue::glue( 'rm -rf {stringr::str_remove(f_, ".Rmd")}_files'))
-  rmarkdown::render(f_, encoding = 'UTF-8')
+  rmarkdown::render(f_)
 }
 
 
