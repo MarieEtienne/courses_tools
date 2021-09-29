@@ -16,7 +16,7 @@ source(file.path('courses_tools','R', 'load_packages.R'))
 
 filenames <- list.files('_presentation', pattern = '.Rmd',
                         full.names = TRUE)
-system(glue::glue( 'cp resources/mpe_pres.css _presentation/.'))
+system(glue::glue( 'cp resources/*.css _presentation/.'))
 system(glue::glue( 'cp resources/*.bib _presentation/.'))
 
 
