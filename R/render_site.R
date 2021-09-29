@@ -1,5 +1,8 @@
-
-rmarkdown::render_site(encoding = 'UTF-8')
+if(file.exists('_site.yml')){
+  rmarkdown::render_site(encoding = 'UTF-8')
+} else {
+  system('mkdir render') 
+}
 
 
 system('mkdir render/courses_tools') 
