@@ -1,7 +1,7 @@
 if(file.exists('_site.yml')){
   rmarkdown::render_site(encoding = 'UTF-8')
 } else {
-  system('mkdir render') 
+  system('rm -rf render; mkdir render') 
 }
 
 
