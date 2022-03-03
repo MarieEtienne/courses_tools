@@ -1,4 +1,3 @@
-install.packages('moveHMM')
 if(file.exists('_site.yml')){
   rmarkdown::render_site(encoding = 'UTF-8')
 } else {
