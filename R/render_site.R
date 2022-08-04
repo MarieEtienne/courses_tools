@@ -9,6 +9,9 @@ system('mkdir render/courses_tools')
 system('mkdir render/resources') 
 system( glue::glue( 'cp -rf courses_tools/resources render/courses_tools/.'))
 system( glue::glue( 'cp -rf resources/figs render/resources/.'))
+system( glue::glue( 'cp -rf resources/img render/resources/.'))
+system( glue::glue( 'cp -rf resources/audio render/resources/.'))
+
 
 if(file.exists("Thesis/hdr_main.pdf")){
   system('cp Thesis/hdr_main.pdf render/.')
